@@ -21,6 +21,7 @@
   --texto: #30372c;
   --cinza: #686d63;
   --borda: #e2d9ca;
+  --cabecalho: #eee9df;
 }
 
 * {
@@ -50,8 +51,8 @@ a {
 }
 
 header {
-  background: rgba(247, 242, 233, 0.97);
-  border-bottom: 1px solid var(--borda);
+  background: var(--cabecalho);
+  border-bottom: 1px solid #ded5c7;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -92,11 +93,11 @@ nav {
 .menu button {
   cursor: pointer;
   border: 1px solid transparent;
-  border-radius: 12px;
-  padding: 11px 17px;
+  border-radius: 10px;
+  padding: 9px 14px;
   background: transparent;
   color: var(--verde);
-  font-size: 0.83rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 1px;
   transition: 0.2s;
@@ -201,14 +202,15 @@ p {
 .btn {
   display: inline-block;
   border: 1px solid var(--verde);
-  border-radius: 12px;
-  padding: 13px 22px;
-  margin: 8px 8px 8px 0;
+  border-radius: 10px;
+  padding: 10px 17px;
+  margin: 6px 6px 6px 0;
   background: var(--verde);
   color: white;
+  font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .btn:hover {
@@ -230,26 +232,6 @@ p {
   margin-bottom: 35px;
 }
 
-.strip {
-  background: var(--verde);
-  color: var(--branco);
-  padding: 22px 0;
-}
-
-.strip-content {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  font-size: 0.9rem;
-}
-
-.strip span::before {
-  content: "✳";
-  color: #d6b69b;
-  margin-right: 10px;
-}
-
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -261,6 +243,12 @@ p {
   border: 1px solid var(--borda);
   border-radius: 18px;
   padding: 26px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(63, 80, 53, 0.06);
 }
 
 .card h3 {
@@ -324,6 +312,14 @@ p {
 .contact-item strong {
   color: var(--verde);
   display: block;
+}
+
+.contact-item a {
+  overflow-wrap: anywhere;
+}
+
+.contact-item a:hover {
+  color: var(--terracota);
 }
 
 input, textarea, select {
@@ -402,7 +398,7 @@ footer p {
   }
 
   .menu button {
-    padding: 10px 12px;
+    padding: 9px 12px;
     font-size: 0.76rem;
   }
 
@@ -433,11 +429,6 @@ footer p {
     padding: 45px 0;
   }
 
-  .strip-content {
-    flex-direction: column;
-    gap: 8px;
-  }
-
   .about-card, .contact-box {
     padding: 23px;
   }
@@ -449,7 +440,8 @@ footer p {
 
 <header>
   <nav class="container">
-    <a class="brand" href="#" onclick="mostrarPagina('home'); return false;">
+    <a class="brand" href="#home"
+       onclick="mostrarPagina('home'); return false;">
       MUNHÉ
       <small>NUTRIÇÃO</small>
     </a>
@@ -486,7 +478,7 @@ footer p {
 
         <button class="btn"
           onclick="mostrarPagina('contato')">
-          AGENDAR CONSULTA ↗
+          AGENDAR CONSULTA
         </button>
 
         <button class="btn btn-outline"
@@ -498,14 +490,6 @@ footer p {
       <div class="hero-image">
         <img src="logo-munhe.png"
           alt="Logo Munhé Nutrição">
-      </div>
-    </section>
-
-    <section class="strip">
-      <div class="container strip-content">
-        <span>Escuta sem julgamentos</span>
-        <span>Estratégias para sua rotina</span>
-        <span>Saúde além do prato</span>
       </div>
     </section>
 
@@ -554,7 +538,7 @@ footer p {
       </div>
     </section>
 
-    <section class="section" style="background:#eae5d9;">
+    <section class="section" style="background:#eee9df;">
       <div class="container intro">
         <span class="eyebrow">Cuidado individualizado</span>
         <h2>Seu plano alimentar precisa caber na sua vida.</h2>
@@ -566,7 +550,7 @@ footer p {
 
         <button class="btn"
           onclick="mostrarPagina('contato')">
-          CONHEÇA AS CONSULTAS ↗
+          CONHEÇA AS CONSULTAS
         </button>
       </div>
     </section>
@@ -607,14 +591,14 @@ footer p {
           </p>
 
           <p>
-            <strong>Conheça a profissional:</strong> este espaço pode
-            apresentar a formação, o registro no CRN, as especializações
-            e a experiência profissional da Vitória.
+            <strong>Conheça a profissional:</strong> acrescente aqui
+            a formação, o registro no CRN, as especializações e a
+            experiência profissional da Vitória.
           </p>
 
           <button class="btn"
             onclick="mostrarPagina('contato')">
-            ENTRE EM CONTATO ↗
+            ENTRE EM CONTATO
           </button>
         </div>
 
@@ -622,7 +606,7 @@ footer p {
     </section>
   </div>
 
-  <!-- CONTATO + CONSULTAS -->
+  <!-- CONTATO E CONSULTAS -->
   <div class="page" id="contato">
     <section class="container section">
 
@@ -668,38 +652,35 @@ footer p {
 
       <div class="contact-grid">
 
-        <div>
-          <div class="contact-box">
-            <h3>Fale com a Vitória</h3>
+        <div class="contact-box">
+          <h3>Fale com a Vitória</h3>
 
-            <p>
-              Use os canais abaixo para consultar horários,
-              modalidades de atendimento e outras informações.
-            </p>
+          <p>
+            Use os canais abaixo para consultar horários,
+            modalidades de atendimento e outras informações.
+          </p>
 
-            <div class="contact-item">
-              <strong>WhatsApp</strong>
-              <a id="whatsappLink" href="#"
-                onclick="return abrirWhatsApp();">
-                Configurar número profissional
-              </a>
-            </div>
+          <div class="contact-item">
+            <strong>WhatsApp</strong>
+            <a href="#" onclick="return abrirWhatsApp();">
+              Conversar pelo WhatsApp
+            </a>
+          </div>
 
-            <div class="contact-item">
-              <strong>Instagram</strong>
-              <a id="instagramLink"
-                href="https://instagram.com/"
-                target="_blank" rel="noopener">
-                Adicionar perfil oficial
-              </a>
-            </div>
+          <div class="contact-item">
+            <strong>Instagram</strong>
+            <a id="instagramLink"
+              href="https://instagram.com/"
+              target="_blank" rel="noopener">
+              Acesse o Instagram
+            </a>
+          </div>
 
-            <div class="contact-item">
-              <strong>E-mail</strong>
-              <a id="emailLink" href="mailto:">
-                Adicionar e-mail profissional
-              </a>
-            </div>
+          <div class="contact-item">
+            <strong>E-mail</strong>
+            <a id="emailLink" href="mailto:">
+              E-mail profissional
+            </a>
           </div>
         </div>
 
@@ -727,7 +708,7 @@ footer p {
             required placeholder="Escreva sua mensagem..."></textarea>
 
           <button type="submit" class="btn">
-            ENVIAR PELO WHATSAPP ↗
+            ENVIAR PELO WHATSAPP
           </button>
 
           <div class="status" id="status" role="status"></div>
@@ -753,13 +734,13 @@ footer p {
 </footer>
 
 <script>
-/* PERSONALIZE OS DADOS DA PROFISSIONAL AQUI */
+/* PERSONALIZE OS DADOS DA PROFISSIONAL */
 
 const WHATSAPP_NUMBER = "5500000000000";
 const INSTAGRAM_URL = "https://instagram.com/";
 const EMAIL_PROFISSIONAL = "contato@exemplo.com";
 
-/* NAVEGAÇÃO NA MESMA PÁGINA */
+/* NAVEGAÇÃO NA MESMA ABA */
 
 function mostrarPagina(nome) {
   document.querySelectorAll(".page").forEach(pagina => {
@@ -775,8 +756,6 @@ function mostrarPagina(nome) {
     );
   });
 
-  document.getElementById("navLinks")?.classList.remove("open");
-
   window.scrollTo({
     top: 0,
     behavior: "smooth"
@@ -786,10 +765,8 @@ function mostrarPagina(nome) {
 /* DADOS DE CONTATO */
 
 document.getElementById("instagramLink").href = INSTAGRAM_URL;
-
 document.getElementById("emailLink").href =
   "mailto:" + EMAIL_PROFISSIONAL;
-
 document.getElementById("emailLink").textContent =
   EMAIL_PROFISSIONAL;
 
@@ -798,9 +775,13 @@ function numeroConfigurado() {
     && !WHATSAPP_NUMBER.endsWith("0000000");
 }
 
-function abrirWhatsApp(texto = "Olá! Gostaria de saber mais sobre as consultas da Munhé Nutrição.") {
+function abrirWhatsApp(texto =
+  "Olá! Gostaria de saber mais sobre as consultas da Munhé Nutrição."
+) {
   if (!numeroConfigurado()) {
-    alert("Configure o número de WhatsApp no código antes de utilizar esta função.");
+    alert(
+      "Configure o número de WhatsApp no código antes de utilizar esta função."
+    );
     return false;
   }
 
@@ -811,7 +792,7 @@ function abrirWhatsApp(texto = "Olá! Gostaria de saber mais sobre as consultas 
   return false;
 }
 
-/* FORMULÁRIO */
+/* FORMULÁRIO DE CONTATO */
 
 document.getElementById("formContato").addEventListener(
   "submit",
